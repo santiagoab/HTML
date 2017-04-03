@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+#floating-panel {
+  position: absolute;
+  top: 10px;
+  left: 25%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map"></div>
+    <script>
+
+var map, heatmap;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 41.403184, lng: 2.187346},
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  });
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: getPoints(),
+    map: map
+  });
+}
+
+function toggleHeatmap() {
+  heatmap.setMap(heatmap.getMap() ? null : map);
+}
+
+function changeGradient() {
+  var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  ]
+  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+}
+
+function changeRadius() {
+  heatmap.set('radius', heatmap.get('radius') ? null : 70);
+}
+
+function changeOpacity() {
+  heatmap.set('opacity', heatmap.get('opacity') ? null : 0.3);
+}
+
+// Heatmap data: 500 Points
+function getPoints() {
+  return [
+
+
+  //you need to copy the points to print to the map HERE!
+  new google.maps.LatLng(41.408184, 2.180346),
+  new google.maps.LatLng(41.39383,2.15196),
+  new google.maps.LatLng(41.406189,2.13501),
+  new google.maps.LatLng(41.37597795,2.19054214),
+  new google.maps.LatLng(41.39083,2.16604),
+  new google.maps.LatLng(41.43087,2.16956308),
+  new google.maps.LatLng(41.38697548,2.16884008),
+  new google.maps.LatLng(41.3860064,2.17059553),
+  new google.maps.LatLng(41.39092972,2.1586585),
+  new google.maps.LatLng(41.38111275,2.12321217),
+  new google.maps.LatLng(41.45026,2.20842),
+  new google.maps.LatLng(41.41385564,2.153092),
+  new google.maps.LatLng(41.38277778,2.17694444),
+  new google.maps.LatLng(41.4014999,2.1449862),
+  new google.maps.LatLng(41.3918025,2.16510641),
+  new google.maps.LatLng(41.3833,2.18333),
+  new google.maps.LatLng(41.4019613,2.1871586),
+  new google.maps.LatLng(41.370833,2.151667),
+  new google.maps.LatLng(41.38111275,2.12321217),
+  new google.maps.LatLng(41.3879,2.16992),
+  new google.maps.LatLng(41.38697548,2.16884008),
+  new google.maps.LatLng(41.39239797,2.15149883),
+  new google.maps.LatLng(41.38361111,2.16666667),
+  new google.maps.LatLng(41.39,2.16),
+  new google.maps.LatLng(41.37231827,2.176018),
+  new google.maps.LatLng(41.37231827,2.176018),
+  new google.maps.LatLng(41.38593,2.17072),
+  new google.maps.LatLng(41.38697548,2.16884008),
+  new google.maps.LatLng(41.38593,2.17072),
+  new google.maps.LatLng(41.42214453,2.09862637),
+  new google.maps.LatLng(41.38111275,2.12321217),
+  new google.maps.LatLng(41.3960991,2.1945801),
+  new google.maps.LatLng(41.3879,2.16992),
+  new google.maps.LatLng(41.41869133,2.17510265),
+
+
+  ];
+}
+	//replace K-E-Y with your key 
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCTT9a43PKyp_Kjmsqq77ciyR9HSsvQMQ&signed_in=true&libraries=visualization&callback=initMap">
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+
+// This example creates circles on the map
+
+// First, create an object containing LatLng and population for each city.
+var citymap = {
+
+
+	//you need to copy the points to print to the map HERE!
+    id664108309369085952: {center: {lat: 41.40419728152443, lng: 2.1939128637313843}},
+    id796330650664046592: {center: {lat: 41.39083, lng: 2.16604}},
+    id796330940653924353: {center: {lat: 41.38697548, lng: 2.16884008}},
+    id796331243721883648: {center: {lat: 41.3860064, lng: 2.17059553}},
+    id796332131588997120: {center: {lat: 41.3918025, lng: 2.16510641}},
+    id796332540764291073: {center: {lat: 41.4019613, lng: 2.1871586}},
+    id796332684100276224: {center: {lat: 41.3879, lng: 2.16992}},
+    id796332784197500928: {center: {lat: 41.38697548, lng: 2.16884008}},
+    id796333586123091968: {center: {lat: 41.38593, lng: 2.17072}},
+    id796334005029376001: {center: {lat: 41.38697548, lng: 2.16884008}},
+    id796334090228117505: {center: {lat: 41.38593, lng: 2.17072}},
+    id796334606219767808: {center: {lat: 41.3879, lng: 2.16992}},
+
+};
+
+function initMap() {
+  // Create the map.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 41.403184, lng: 2.187346},
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  // Construct the circle for each value in citymap.
+  // Note: We scale the area of the circle based on the population.
+  for (var city in citymap) {
+    // Add the circle for this city to the map.
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#0052A4',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#0052A4',
+      fillOpacity: 0.35,
+      map: map,
+      center: citymap[city].center,
+      radius: 100
+    });
+  }
+}
+	//replace K-E-Y with your key 
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn0Sw50_ZQt_y4z69hSU_xuJcDE8AnGcQ&signed_in=true&callback=initMap"></script>
+  </body>
+</html>
